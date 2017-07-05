@@ -1,7 +1,7 @@
 $ = jQuery.noConflict();
 
 $(document).ready(function(){
-
+	boxAdjustment();
 	// MENU BUTTON
 	$('.mobile-menu a').on('click', function(e){
 		$('nav.site-nav').toggle('slow');
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		}
 	});
 
-	boxAdjustment();
+	
 });
 
 function boxAdjustment() {

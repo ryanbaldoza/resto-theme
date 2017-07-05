@@ -52,6 +52,10 @@ h4 {
 	font-size: 24px;
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+}
 
 /*   HELPER CLASSES
 /* ======================================================== */
@@ -75,6 +79,10 @@ h4 {
 
 .text-center {
 	text-align: center;
+}
+
+.primary-text {
+	color: #a61206;
 }
 
 
@@ -397,6 +405,44 @@ nav.site-nav ul li.current_page_item a {
 
 }
 
+/*   SPECIALTIES
+/* ======================================================== */
+
+.our-specialties {
+	padding: 0 60px;
+	background-color: #fff;	
+}
+
+.specialty-content {
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.specialty-content a {
+	color: #3d3d3d;
+	text-decoration: none;
+}
+
+.specialty-content h4 {
+	border-bottom: 1px solid #dfdfdd;
+	padding: 15px 0;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.specialty-content h4 span {
+	float: right;
+	color: #f19f30;
+	font-family: 'Open-Sans', sans-serif;
+}
+
+.specialty-content p {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+
 /*   FOOTER
 /* ======================================================== */
 
@@ -476,4 +522,34 @@ footer p.copyright {
 		float: none;
 	}
 
+}
+
+/*   GRID
+/* ======================================================== */
+
+
+@media only screen and (min-width: 768px) {
+	.container-grid {
+		margin-left: 10px;
+		margin-right: -10px;
+	}
+
+	.container-grid::after {
+		content:'';
+		display: block;
+		clear: both;
+	}
+
+	div[class*=columns] {
+		float: left;
+		padding: 0 10px;
+		
+	}
+
+	.columns1-4 { width: 25%; }
+	.columns2-4 { width: 50%; }
+	.columns3-4 { width: 75%; }
+
+	.columns1-3 { width: 33.3333%; }
+	.columns2-3 { width: 66.6666%; }
 }
