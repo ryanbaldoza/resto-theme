@@ -10,7 +10,6 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
         <?php wp_head(); ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <!--<link rel="stylesheet" href="css/main.css"> -->
@@ -40,7 +39,7 @@
                      ?>
                 </div><!-- .socials -->
                 <address class="header-address">
-                    <p>8179 Apalit, Pampanga</p>
+                    <p>1234 San Juan, Apalit, Pampanga</p>
                     <p>Phone Number: +45-301-7890</p>
                 </address>
             </div><!-- .header-information -->
@@ -48,7 +47,12 @@
     </header><!-- .site-header -->
 
     <div class="main-menu">
-        <div class="navigation">
+
+        <div class="mobile-menu">
+            <a href="#" class="mobile"><i class="fa fa-bars"></i> Menu</a>
+        </div><!-- mobile-menu -->
+
+        <div class="navigation container">
             <?php 
                 $args = array(
                     'theme_location'    =>  'header-menu',
