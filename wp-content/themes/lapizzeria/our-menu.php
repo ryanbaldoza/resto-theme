@@ -13,19 +13,20 @@ get_header();
 			<div class="hero-content">
 				<div class="hero-text">
 					<h1><?php the_title(); ?></h1>
+					<h5><?php bloginfo('description'); ?></h5>
 				</div>
 			</div>
 		</div>
-		
-		<div class="main-content container">
+	<div class="main-content container content-wrapper">
+
 			<main class="text-center content-text">
 				<?php the_content(); ?>
 			</main>
-		</div>
+
 
 	<?php endwhile; ?>
 
-	<div class="our-specialties container">
+	<div class="our-specialties">
 		<h3 style="margin-top: 0;" class="primary-text">Pizzas</h3>
 		<div class="container-grid">
 			<?php 
@@ -78,7 +79,7 @@ get_header();
 			
 		</div>
 	</div>
-
+</div>	
 <?php
 
 get_footer();

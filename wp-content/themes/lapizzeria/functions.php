@@ -5,6 +5,9 @@ function lapizzeria_setup() {
 
 	add_image_size( 'boxes', 437, 291, true );
 	add_image_size( 'specialties', 768, 515, true );
+
+	update_option('thumbnail_size_w', 253);
+	update_option('thumbnail_size_l', 164);
 }
 add_action('after_setup_theme', 'lapizzeria_setup');
 
@@ -13,6 +16,7 @@ function lapizzeria_styles() {
 	//
 	wp_register_style('googlefont', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700,900', array(), '1.0.0');
 	wp_register_style('normalize', get_template_directory_uri() . '/css/normalize.css', array(), '7.0.0');
+	wp_register_style('fluidbox', get_template_directory_uri() . '/css/fluidbox.min.css', array(), '1.0.0');
 	wp_register_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.7.0');
 	wp_register_style('style', get_template_directory_uri() . '/style.css', array('normalize'), '1.0');
 
@@ -20,16 +24,19 @@ function lapizzeria_styles() {
 	//enqueue the styles
 	wp_enqueue_style('googlefont');
 	wp_enqueue_style('normalize');
+	wp_enqueue_style('fluidbox');
 	wp_enqueue_style('font-awesome');
 	wp_enqueue_style('style');
 
 
 	//add JS files
+	wp_register_script('fluidbox', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array('jquery'), '1.0.0', true);
 	wp_register_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
 
 
 	//enqueue JS files
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('fluidbox');
 	wp_enqueue_script('script');
 }
 add_action('wp_enqueue_scripts', 'lapizzeria_styles');
@@ -87,3 +94,34 @@ function lapizzeria_specialties() {
 add_action( 'init', 'lapizzeria_specialties' );
 
 
+//Widget Zone
+
+function lapizzeria_widgets() {
+	register_sidebar(array(
+		'name'			=>	'Blog Sidebar',
+		'id'			=>	'blog_sidebar',
+		'before_widget'	=>	'<div class="widget">',
+		'after_widget'	=>	'</div>',
+		'before_title'	=>	'<h3 class="primary-text">',
+		'after_title'	=>	'</h3>'
+	));
+}
+add_action('widgets_init', 'lapizzeria_widgets');
+
+//Remove Website Field from Comments Form
+function disable_website_field($fields) {
+if(isset($fields['url']))
+unset($fields['url']);
+return $fields;
+}
+
+add_filter('comment_form_default_fields', 'disable_website_field');
+
+function wpb_move_comment_field_to_bottom( $fields ) {
+$comment_field = $fields['comment'];
+unset( $fields['comment'] );
+$fields['comment'] = $comment_field;
+return $fields;
+}
+
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );

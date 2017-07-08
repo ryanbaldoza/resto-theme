@@ -4,7 +4,16 @@
 	            <img src="<?= get_template_directory_uri(); ?>/img/logo.svg" alt="La Pizzeria Logo" class="footer-logo-img">
 	        </a>
 	    </div><!-- .logo -->
-      
+		<?php 
+		$args = array(
+			'theme_location'	=>	'header-menu',
+			'container'			=>	'nav',
+			'after'				=>	'<span class="separator"> | </span>'
+		);
+		wp_nav_menu($args);
+
+		?>
+		
             <?php 
                 $args = array(
                     'theme_location'    =>  'social-menu',
@@ -18,15 +27,7 @@
 
              ?>
        
-		<?php 
-		$args = array(
-			'theme_location'	=>	'header-menu',
-			'container'			=>	'nav',
-			'after'				=>	'<span class="separator"> | </span>'
-		);
-		wp_nav_menu($args);
 
-		?>
 		<address class="footer-address">
 	        <p><strong>1234 San Juan, Apalit, Pampanga</strong></p>
 	        <p><strong>Phone Number: +45-301-7890</strong></p>
