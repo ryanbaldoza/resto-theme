@@ -14,6 +14,7 @@ function lapizzeria_setup() {
 
 	add_image_size( 'boxes', 437, 291, true );
 	add_image_size( 'specialties', 768, 515, true );
+	add_image_size( 'specialty-portrait', 435, 530, true );
 
 	update_option('thumbnail_size_w', 253);
 	update_option('thumbnail_size_l', 164);
@@ -41,6 +42,7 @@ function lapizzeria_styles() {
 
 
 	//add JS files
+	wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB188cKGPDQo2sLKmteeTIPjYLVvUg6cHM&callback=initMap', array(), '', true);
 	wp_register_script('fluidbox', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array('jquery'), '1.0.0', true);
 	wp_register_script('datetime', get_template_directory_uri() . '/js/jquery.datetimepicker.full.js', array('jquery'), '1.0.0', true);
 	wp_register_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
@@ -48,6 +50,7 @@ function lapizzeria_styles() {
 
 	//enqueue JS files
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('googlemaps');
 	wp_enqueue_script('fluidbox');
 	wp_enqueue_script('datetime');
 	wp_enqueue_script('script');
@@ -139,3 +142,14 @@ return $fields;
 }
 
 add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+
+
+function add_async_defer($tag, $handle) {
+	if('googlemaps' !== $handle) {
+		return $tag;
+	}
+
+	return str_replace(' src', 'async="async" defer="defer" src', $tag);
+}
+
+add_filter('script_loader_tag', 'add_async_defer', 10, 2);

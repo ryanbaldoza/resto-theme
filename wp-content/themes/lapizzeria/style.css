@@ -129,7 +129,8 @@ img {
 }
 
 .primary:hover, 
-.comment-respond form input[type=submit]:hover {
+.comment-respond form input[type=submit]:hover,
+.home .reservation-info input[type=submit]:hover {
 	background-color: #7b0d04;
 }
 
@@ -296,8 +297,8 @@ nav.site-nav ul li a:hover {
 }
 
 nav.site-nav ul li.current_page_item a,
-.single-specialties nav.site-nav ul li.menu-item-23, 
-nav.site-nav ul li.current_page_parent a {
+.single-specialties nav.site-nav ul li.menu-item-23 a,
+.post-template-default nav.site-nav ul li.current_page_parent.menu-item-19 a {
 	border-bottom: 8px solid #a61206;
 	color: #a61206;
 }
@@ -306,7 +307,13 @@ nav.site-nav ul li.current_page_parent a {
 	color: #a61206;
 }
 
+nav.site-nav ul li:first-of-type {
+	display: none;
+}
 
+.page-id-76 #menu-header-menu {
+	border-bottom: 8px solid #a61206;
+}
 
 /* ====== Responsive Menu Button ====== */
 
@@ -330,7 +337,8 @@ nav.site-nav ul li.current_page_parent a {
 	}
 
 	nav.site-nav ul li.current_page_item a,
-	.single-specialties nav.site-nav ul li.menu-item-23 {
+	.single-specialties nav.site-nav ul li.menu-item-23 a,
+	nav.site-nav ul li.current_page_parent.menu-item-19 a  {
 		border-bottom: 2px solid #a61206;
 		color: #a61206;
 	}
@@ -468,7 +476,7 @@ nav.site-nav ul li.current_page_parent a {
 	}
 }
 
-/*   HOME PAGE
+/*   HOME PAGE - HERO BANNER
 /* ======================================================== */
 
 .home div.hero {
@@ -482,14 +490,15 @@ nav.site-nav ul li.current_page_parent a {
 .home div.hero-content p {
 	font-size: 18px;
 	line-height: 24px;
-
 }
+
+
 
 /* ====== Media Queries ====== */
 
 @media only screen and (min-width: 768px) {
 	.home div.main-content {
-		margin-top: 0;
+		
 	}
 
 	.home div.hero-content p {
@@ -500,7 +509,7 @@ nav.site-nav ul li.current_page_parent a {
 	}
 
 	.home .hero-text {
-		margin-top: 0 !important;
+	
 	}
 }	
 
@@ -512,6 +521,217 @@ nav.site-nav ul li.current_page_parent a {
 		margin-bottom: 20px;
 	}	
 }
+
+/*   HOME PAGE - PIZZA SPECIALS
+/* ======================================================== */
+
+.home .container-grid {
+	margin: 0;
+}
+
+.home .main-content .container-grid h2{
+	margin-top: 0;
+}
+
+.specialty-panel {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	padding: 0;
+	text-align: center;
+}
+
+.specialty-panel::after {
+  background-color: #f19f30;
+  height: 157%;
+  bottom: -145%;
+  content: attr(data-content);
+  left: 0;
+  right: 0;
+  position: absolute;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  font-size: 30px;
+  padding-top: 12px;
+  font-weight: 700;
+  color: #fff;
+
+}	
+
+
+.specialty-panel * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.75s ease;
+  transition: all 0.75s ease;
+}
+
+.specialty-panel img {
+  vertical-align: top;
+  max-width: 100%;
+  backface-visibility: hidden;
+  object-fit: cover;
+}
+
+.specialty-panel .information {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1em;
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+  padding: 10px;
+}
+
+
+.specialty-panel:hover > img,
+.specialty-panel.hover > img {
+  opacity: 0.1;
+}
+
+.specialty-panel:hover:after,
+.specialty-panel.hover:after {
+  bottom: 95%;
+}
+
+.specialty-panel:hover .information,
+.specialty-panel.hover .information {
+  opacity: 1;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.specialty-panel .information .price {
+	font-size: 36px;
+	font-weight: 700;
+	margin: 0 0 10px 0;
+	color: #f19f30;
+}
+
+.specialty-panel .information h3 {
+	font-size: 30px;
+	margin-top: 40px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.specialty-panel .information p {
+	margin: 15px 0;
+	line-height: 24px;
+}
+
+.specialty-panel .information a {
+	color: #fff;
+}
+
+/* ====== Media Queries ====== */
+
+@media only screen and (min-width: 767px) {
+	.specialty-panel:after {
+		font-size: 20px;
+		height: 160%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.specialty-panel:after {
+		font-size: 30px;
+		height: 162%;
+		padding-top: 14px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.specialty-panel {
+		margin-bottom: 30px;
+	}
+
+	.specialty-panel:after {
+		font-size: 36px;
+		height: 165%;
+		padding-top: 20px;
+	}
+}
+
+
+/*   HOME PAGE - LOCATION AND RESERVATION
+/* ======================================================== */
+
+.location-reservation {
+	margin-top: 50px;
+	background-image: url(img/bg_ingredients.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.location-reservation .container-grid {
+	margin: 0;
+}
+
+.location-reservation .container-grid .map-col {
+	padding: 0 !important;
+}
+
+.home .reservation-info {
+	margin: 0;
+	padding: 30px 20px;
+}
+
+.home .reservation-info h3 {
+	color: #fff;
+	margin-top: 0;
+}
+
+.home .reservation-info h3::after {
+	background-color: #fff;
+}
+
+.home .reservation-info input, 
+.home .reservation-info textarea {
+	background-color: transparent;
+	border: 4px solid #fff;
+}
+
+.home .reservation-info input[type=submit] {
+	background-color: #a61206;
+	border: none;
+	margin-top: 0;
+
+}
+
+.home form.reservation-form ::-webkit-input-placeholder {
+	color: #fff; 
+}
+
+.home form.reservation-form ::-moz-placeholder  {
+	color: #fff; 
+}
+
+.home form.reservation-form :-moz-placeholder {
+	color: #fff; 
+}
+ 
+.home form.reservation-form ::-ms-input-placeholder {
+	color: #fff; 
+}
+
+#map {
+	height: 109vh;
+	padding: 0;
+}
+
+
+
 
 /*   ABOUT US BOXES
 /* ======================================================== */
@@ -1046,7 +1266,7 @@ footer nav ul li a:hover {
 
 footer nav ul li.current_page_item a,
 .single-specialties footer nav ul li.menu-item-23 a, 
-footer nav ul li.current_page_parent a {
+.post-template-default footer nav ul li.current_page_parent.menu-item-19 a {
 	border-bottom: 1px solid #a61206;
 	color: #a61206;
 }
@@ -1071,9 +1291,13 @@ footer p.copyright {
 
 }
 
+footer nav ul li.menu-item-88 {
+	display: none;
+}
+
 /* ====== Media Queries ====== */
 
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 510px) {
 	footer nav ul li {
 		display: inline;	
 	}
