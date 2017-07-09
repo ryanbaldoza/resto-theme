@@ -133,6 +133,16 @@ img {
 	background-color: #7b0d04;
 }
 
+.secondary {
+	background-color: #f19f30;
+	font-size: 18px;
+	transition: background-color 0.2s;
+}
+
+.secondary:hover {
+	background-color: #da8b20;
+}
+
 /*   HEADER
 /* ======================================================== */
 
@@ -346,7 +356,7 @@ nav.site-nav ul li.current_page_parent a {
 }
 
 
-/*   FULL-WIDTH TEMPLATE
+/*   TEMPLATE
 /* ======================================================== */
 
 /* ====== Hero Image ====== */
@@ -355,7 +365,7 @@ nav.site-nav ul li.current_page_parent a {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
-	height: 450px;
+	height: 250px;
 	display: table;
 	margin: 0 auto;
 	text-align: center;
@@ -384,7 +394,7 @@ nav.site-nav ul li.current_page_parent a {
 .hero-text h5 {
   margin: 0 40px;
   padding: 5px 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   border-top: 2px solid #fff;
   border-bottom: 2px solid #fff;
@@ -405,21 +415,6 @@ nav.site-nav ul li.current_page_parent a {
   border-color: #fff #fff transparent #fff;
 }
 
-.hero-text .diamond {
-  width: 10px;
-  height: 10px;
-  margin: 15px 5px;
-  display: inline-block;
-  line-height: 80px;
-  background: #fff;
-  -webkit-transform: rotateZ(-45deg);
-  transform: rotateZ(-45deg);
-}
-
-.hero-text .diamond:nth-of-type(2) {
-  -webkit-transform: rotateZ(-45deg) scale(2) translate(2px, -2px);
-  transform: rotateZ(-45deg) scale(2) translate(2px, -2px);
-}
 
 .hero .hero-content {
 	display: table-cell;
@@ -447,6 +442,10 @@ nav.site-nav ul li.current_page_parent a {
 /* ====== Media Queries ====== */
 
 @media only screen and (min-width: 768px) {
+	.hero {
+		height: 450px;
+	}
+
 	.hero-text {
 		width: 80%;
 		margin: 0 auto;
@@ -469,6 +468,50 @@ nav.site-nav ul li.current_page_parent a {
 	}
 }
 
+/*   HOME PAGE
+/* ======================================================== */
+
+.home div.hero {
+	height: 100vh;
+}
+
+.home div.hero-text {
+	margin-bottom: 60px;
+}
+
+.home div.hero-content p {
+	font-size: 18px;
+	line-height: 24px;
+
+}
+
+/* ====== Media Queries ====== */
+
+@media only screen and (min-width: 768px) {
+	.home div.main-content {
+		margin-top: 0;
+	}
+
+	.home div.hero-content p {
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.home .hero-text {
+		margin-top: 0 !important;
+	}
+}	
+
+@media only screen and (min-width: 768px) {
+	.home div.hero-content p {
+		width: 60%;
+		margin: 0 auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}	
+}
 
 /*   ABOUT US BOXES
 /* ======================================================== */
@@ -541,10 +584,13 @@ nav.site-nav ul li.current_page_parent a {
 		width: 33.3333%;
 	}
 
+
+}
+
+@media only screen and (min-width: 992px) {
 	.box-information .single-box h3 {
 		font-size: 24px;
 	}
-
 }
 
 /*   SPECIALTIES

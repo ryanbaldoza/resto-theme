@@ -1,5 +1,14 @@
 <?php 
 
+//Import database.php (contains SQL structure)
+require get_template_directory() . '/inc/database.php';
+
+//Handles reservation submission
+require get_template_directory() . '/inc/reservations.php';
+
+//Creates options pages for the theme
+require get_template_directory() . '/inc/options.php';
+
 function lapizzeria_setup() {
 	add_theme_support('post-thumbnails');
 
@@ -17,6 +26,7 @@ function lapizzeria_styles() {
 	wp_register_style('googlefont', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700,900', array(), '1.0.0');
 	wp_register_style('normalize', get_template_directory_uri() . '/css/normalize.css', array(), '7.0.0');
 	wp_register_style('fluidbox', get_template_directory_uri() . '/css/fluidbox.min.css', array(), '1.0.0');
+	wp_register_style('datetime', get_template_directory_uri() . '/css/jquery.datetimepicker.css', array(), '1.0.0');
 	wp_register_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.7.0');
 	wp_register_style('style', get_template_directory_uri() . '/style.css', array('normalize'), '1.0');
 
@@ -25,18 +35,21 @@ function lapizzeria_styles() {
 	wp_enqueue_style('googlefont');
 	wp_enqueue_style('normalize');
 	wp_enqueue_style('fluidbox');
+	wp_enqueue_style('datetime');
 	wp_enqueue_style('font-awesome');
 	wp_enqueue_style('style');
 
 
 	//add JS files
 	wp_register_script('fluidbox', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array('jquery'), '1.0.0', true);
+	wp_register_script('datetime', get_template_directory_uri() . '/js/jquery.datetimepicker.full.js', array('jquery'), '1.0.0', true);
 	wp_register_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
 
 
 	//enqueue JS files
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('fluidbox');
+	wp_enqueue_script('datetime');
 	wp_enqueue_script('script');
 }
 add_action('wp_enqueue_scripts', 'lapizzeria_styles');
@@ -57,8 +70,8 @@ function lapizzeria_specialties() {
 	$labels = array(
 		'name'               => _x( 'Pizzas', 'lapizzeria' ),
 		'singular_name'      => _x( 'Pizza', 'post type singular name', 'lapizzeria' ),
-		'menu_name'          => _x( 'Pizzas', 'admin menu', 'lapizzeria' ),
-		'name_admin_bar'     => _x( 'Pizzas', 'add new on admin bar', 'lapizzeria' ),
+		'menu_name'          => _x( 'La Pizzeria Menu', 'admin menu', 'lapizzeria' ),
+		'name_admin_bar'     => _x( 'La Pizzeria Menu', 'add new on admin bar', 'lapizzeria' ),
 		'add_new'            => _x( 'Add New', 'book', 'lapizzeria' ),
 		'add_new_item'       => __( 'Add New Pizza', 'lapizzeria' ),
 		'new_item'           => __( 'New Pizzas', 'lapizzeria' ),
@@ -83,9 +96,10 @@ function lapizzeria_specialties() {
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 6,
+		'menu_position'      => 20,
+		'menu_icon' 		 => get_template_directory_uri() . '/img/icon-pizza.png',
 		'supports'           => array( 'title', 'editor', 'thumbnail' ),
-    'taxonomies'          => array( 'category' ),
+    	'taxonomies'         => array( 'category' ),
 	);
 
 	register_post_type( 'specialties', $args );

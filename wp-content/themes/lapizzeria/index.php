@@ -13,7 +13,7 @@ get_header();
 			<div class="hero-content">
 				<div class="hero-text">
 					<h1><?= get_the_title($blog_page); ?></h1>
-					<h5><?php bloginfo('description'); ?></h5>
+					<h5>	</h5>
 				</div><!-- hero-text -->
 			</div><!-- hero-content -->
 		</div><!-- hero -->

@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 	if ( window.location.pathname == '/' || window.location.pathname == '/index.php'){ 
 		$('#menu-header-menu').css({'border-bottom': '8px solid #a61206'});
+		
 	}
 
 	// SHOW MOBILE MENU
@@ -44,7 +45,10 @@ $(document).ready(function() {
 		$('[data-fluidbox]').fluidbox();
 	}
 
+	//DATETIME PICKER PLUGIN
+	jQuery('#datetimepicker').datetimepicker({
 
+	});
 	
 });
 
