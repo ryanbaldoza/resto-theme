@@ -42,7 +42,8 @@ function lapizzeria_styles() {
 
 
 	//add JS files
-	wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB188cKGPDQo2sLKmteeTIPjYLVvUg6cHM&callback=initMap', array(), '', true);
+	$api_key = esc_html(get_option('lapizzeria_gmaps_key'));
+	wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key='.$api_key.'&callback=initMap', array(), '', true);
 	wp_register_script('fluidbox', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array('jquery'), '1.0.0', true);
 	wp_register_script('datetime', get_template_directory_uri() . '/js/jquery.datetimepicker.full.js', array('jquery'), '1.0.0', true);
 	wp_register_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
@@ -54,6 +55,18 @@ function lapizzeria_styles() {
 	wp_enqueue_script('fluidbox');
 	wp_enqueue_script('datetime');
 	wp_enqueue_script('script');
+
+	wp_localize_script(
+		'script',
+		'options',
+		array(
+			'latitude'	=>	esc_html(get_option('lapizzeria_gmaps_latitude')),
+			'longitude'	=>	esc_html(get_option('lapizzeria_gmaps_longitude')),
+			'zoom'		=>	esc_html(get_option('lapizzeria_gmaps_zoom')),
+			'key'		=>	esc_html(get_option('lapizzeria_gmaps_key'))
+		)
+
+	);
 }
 add_action('wp_enqueue_scripts', 'lapizzeria_styles');
 
@@ -122,6 +135,13 @@ function lapizzeria_widgets() {
 		'before_title'	=>	'<h3 class="primary-text">',
 		'after_title'	=>	'</h3>'
 	));
+
+	register_sidebar(array(
+		'name'			=>	'Address and Shop Hours',
+		'id'			=>	'address_shop',
+		'before_widget'	=>	'<p>',
+		'after_widget'	=>	'</p>',
+	));
 }
 add_action('widgets_init', 'lapizzeria_widgets');
 
@@ -153,3 +173,12 @@ function add_async_defer($tag, $handle) {
 }
 
 add_filter('script_loader_tag', 'add_async_defer', 10, 2);
+
+function SearchFilter($query) {
+if ($query->is_search) {
+$query->set('post_type', 'post');
+}
+return $query;
+}
+
+add_filter('pre_get_posts','SearchFilter');

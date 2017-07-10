@@ -116,7 +116,7 @@ img {
 	width: auto;
 	border-radius: 8px;
 	color: #fff;
-	padding: 15px 80px;
+	padding: 15px 30px;
 	margin-top: 20px;
 	display: inline-block;
 	text-decoration: none;
@@ -135,13 +135,13 @@ img {
 }
 
 .secondary {
-	background-color: #f19f30;
+	background-color: #127427;
 	font-size: 18px;
 	transition: background-color 0.2s;
 }
 
 .secondary:hover {
-	background-color: #da8b20;
+	background-color: #116523;
 }
 
 /*   HEADER
@@ -203,12 +203,14 @@ nav.social-nav ul li {
 	display: inline-block;
 }
 
+nav.social-nav li a[href*="tel"]::before { content: '\f095';}
 nav.social-nav li a[href*="facebook.com"]::before { content: '\f09a';}
 nav.social-nav li a[href*="twitter.com"]::before { content: '\f099';}
 nav.social-nav li a[href*="instagram.com"]::before { content: '\f16d';}
 nav.social-nav li a[href*="pinterest.com"]::before { content: '\f231';}
 nav.social-nav li a[href*="youtube.com"]::before { content: '\f16a';}
 
+nav.social-nav ul li a[href*="tel"]:hover::before { color: #f19f30; }
 nav.social-nav ul li a[href*="facebook.com"]:hover::before { color: #3b5998; }
 nav.social-nav ul li a[href*="twitter.com"]:hover::before { color: #55acee; }
 nav.social-nav ul li a[href*="instagram.com"]:hover::before { color: #e95950; }
@@ -312,7 +314,7 @@ nav.site-nav ul li:first-of-type {
 }
 
 .page-id-76 #menu-header-menu {
-	border-bottom: 8px solid #a61206;
+	
 }
 
 /* ====== Responsive Menu Button ====== */
@@ -406,7 +408,7 @@ nav.site-nav ul li:first-of-type {
   font-weight: 400;
   border-top: 2px solid #fff;
   border-bottom: 2px solid #fff;
-  white-space: nowrap;
+
 }
 
 .hero-text h5:after {
@@ -481,10 +483,12 @@ nav.site-nav ul li:first-of-type {
 
 .home div.hero {
 	height: 100vh;
+	padding: 30px 0;
 }
 
 .home div.hero-text {
 	margin-bottom: 60px;
+
 }
 
 .home div.hero-content p {
@@ -492,7 +496,9 @@ nav.site-nav ul li:first-of-type {
 	line-height: 24px;
 }
 
-
+.home .main-content {
+	margin-top: -20px;
+}
 
 /* ====== Media Queries ====== */
 
@@ -507,6 +513,10 @@ nav.site-nav ul li:first-of-type {
 		margin-top: 20px;
 		margin-bottom: 20px;
 	}
+	
+	.home div.hero-content h1 {
+		margin-top: 60px;
+	}
 
 	.home .hero-text {
 	
@@ -520,6 +530,47 @@ nav.site-nav ul li:first-of-type {
 		margin-top: 20px;
 		margin-bottom: 20px;
 	}	
+}
+
+/*   HOME PAGE - HERO BANNER
+/* ======================================================== */
+
+section.promo {
+	background-color: #f19f30;
+	width: 100%;
+	min-height: 70px;
+	text-align: center;
+}
+
+.promo .promo-content {
+	padding: 10px 10px 40px;
+}
+
+.promo .promo-content h2 {
+	color: #fff;
+	text-align: center;
+	margin: 0;
+	font-size: 36px;
+}
+
+.promo .promo-content a {
+	width: 200px;
+}
+
+@media only screen and (min-width: 768px) {
+	.promo .promo-content {
+		display: -webkit-inline-box;
+		vertical-align: middle;
+		padding: 0 60px 20px;
+	}
+
+	.promo .promo-content h2 {
+		margin: 30px;
+	}
+
+	.promo .promo-content a {
+		margin-top: 25px;
+	}
 }
 
 /*   HOME PAGE - PIZZA SPECIALS
@@ -700,6 +751,7 @@ nav.site-nav ul li:first-of-type {
 .home .reservation-info textarea {
 	background-color: transparent;
 	border: 4px solid #fff;
+	color: #fff;
 }
 
 .home .reservation-info input[type=submit] {

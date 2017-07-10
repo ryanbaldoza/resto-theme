@@ -29,8 +29,11 @@
        
 
 		<address class="footer-address">
-	        <p><strong>1234 San Juan, Apalit, Pampanga</strong></p>
-	        <p><strong>Phone Number: +45-301-7890</strong></p>
+                    <?php $address = esc_html(get_option('lapizzeria_info_address')); 
+                          $shop_hours = esc_html(get_option('lapizzeria_info_shophours')); 
+                    ?>
+                   <p><strong><?php echo $address ?></strong></p>
+                   <p><strong><?php echo $shop_hours ?></strong></p>
 		</address>
 		<p class="copyright">All Rights Reserved <?php echo date('Y') ?></p>
 	</footer>

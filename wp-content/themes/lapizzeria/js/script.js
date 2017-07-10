@@ -1,14 +1,14 @@
 var map;
 function initMap() {
-
+	var latitude = options.latitude;
 	var latLng = {
-		lat: 14.9497758,
-		lng: 120.7562516
+		lat: parseFloat(options.latitude),
+		lng: parseFloat(options.longitude)
 	}
 
 	map = new google.maps.Map(document.getElementById('map'), {
 	  center: latLng,
-	  zoom: 16
+	  zoom: parseFloat(options.zoom)
 	});
 
 	var marker = new google.maps.Marker({
@@ -43,17 +43,18 @@ $(document).ready(function() {
 		var div2 = $('.socials').detach();
 		
 		if($(document).width() >= breakpoint_1) {
-			$('nav.site-nav ul li:first-of-type').hide();
 			$('nav.site-nav').show();
+			$('nav.site-nav ul li:first-of-type').hide();
 			$('#second-box').prepend(div1);
 			$('.header-information').prepend(div2);
+		
 		
 		} else {
 			$('nav.site-nav ul li:first-of-type').show();
 			$('nav.site-nav').hide();
 			$('#second-box').append(div1);
 			$('.header-information').append(div2);
-			$('#menu-header-menu').css({'border-bottom': '8px solid #a61206'});
+	
 		}
 
 
@@ -67,7 +68,7 @@ $(document).ready(function() {
 
 	});
 	if ( window.location.pathname == '/' || window.location.pathname == '/index.php'){ 
-		$('#menu-header-menu').css({'border-bottom': '8px solid #a61206'});
+		// $('#menu-header-menu').css({'border-bottom': '8px solid #a61206'});
 	
 	}
 	//FLUIDBOX PLUGIN

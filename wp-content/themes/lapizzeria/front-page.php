@@ -16,6 +16,13 @@ get_header();
 				<a class="button secondary" href="<?php the_field('hero_button_link') ?>"><?php the_field('hero_button_text') ?></a>
 			</div>
 		</div>
+		<section class="promo">
+
+				<div class="promo-content">
+					<h2><?php the_field('promo_post') ?></h2>
+					<a href="<?php the_field('promo_link') ?>" class="button primary">Read More</a>
+				</div>
+		</section>
 		
 		<div class="main-content container content-wrapper">
 			<main class="container-grid clear">
